@@ -80,8 +80,8 @@ function Index() {
               issue 001 · risograph edition · 1a.m.
             </p>
             <h1 className="font-serif text-balance text-6xl font-semibold leading-[0.92] tracking-tight sm:text-8xl">
-              <span className="block text-cream">Sunflower side</span>
-              <span className="block text-sunlite">of the moon.</span>
+              <span className="block text-cream">HAPPY BIRTHDAYY</span>
+              <span className="block text-sunlite">GAYATHRIII</span>
             </h1>
             <p className="mt-7 max-w-[52ch] text-pretty text-base leading-relaxed text-cream/75 sm:text-lg">
               A one-page zine for the girl who has Arijit Singh on repeat, Anuv Jain in her earbuds, and an
