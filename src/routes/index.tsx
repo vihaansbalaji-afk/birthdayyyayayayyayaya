@@ -31,8 +31,8 @@ export const Route = createFileRoute("/")({
 const stickers = [
   { label: "arijit singh, no notes", bg: "bg-sun", text: "text-night", ring: "ring-sun/40", dot: "bg-night", delay: "" },
   { label: "anuv jain at 2a.m.", bg: "bg-petrol", text: "text-night", ring: "ring-petrol/40", dot: "bg-night", delay: ".3s" },
-  { label: "[inside joke: the chai thing]", bg: "bg-rose", text: "text-cream", ring: "ring-rose/40", dot: "bg-cream", delay: ".6s" },
-  { label: "sunflowers > feelings", bg: "bg-royal", text: "text-sunlite", ring: "ring-cream/15", dot: "bg-sunlite", delay: ".9s" },
+  { label: "4 chords and the truth", bg: "bg-rose", text: "text-cream", ring: "ring-rose/40", dot: "bg-cream", delay: ".6s" },
+  { label: "stops for every single dog", bg: "bg-royal", text: "text-sunlite", ring: "ring-cream/15", dot: "bg-sunlite", delay: ".9s" },
   { label: "the playlist is the gift", bg: "bg-deep", text: "text-cream", ring: "ring-cream/15", dot: "bg-electric", delay: "1.2s" },
   { label: "[inside joke: that one meme]", bg: "bg-electric", text: "text-cream", ring: "ring-electric/40", dot: "bg-cream", delay: "1.5s" },
 ];
@@ -84,9 +84,9 @@ function Index() {
               <span className="block text-sunlite">GAYATHRIII</span>
             </h1>
             <p className="mt-7 max-w-[52ch] text-pretty text-base leading-relaxed text-cream/75 sm:text-lg">
-              A one-page zine for the girl who has Arijit Singh on repeat, Anuv Jain in her earbuds, and an
-              unreasonable amount of sunflowers in her room. No love letters. Just stickers, sunflowers, and a very
-              specific playlist.
+              A one-page zine for the girl who has Arijit Singh on repeat, Anuv Jain in her earbuds, a guitar
+              she actually plays, and an unreasonable amount of sunflowers. Also: cannot walk past a dog.
+              No love letters. Just stickers and a very specific playlist.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <a
@@ -128,7 +128,7 @@ function Index() {
             <div className="col-span-2 flex items-center gap-4 rounded-[min(1vw,12px)] bg-deep p-5 ring-1 ring-cream/10">
               <span className="size-5 rotate-45 bg-petrol" />
               <p className="font-serif text-lg italic text-cream/80">
-                "the playlist is the love language, but we're not saying that."
+                "guitar in one hand, chai in the other, a dog video on loop. that's the whole vibe."
               </p>
             </div>
           </div>
@@ -270,7 +270,7 @@ function Index() {
 
             <div className="mt-8 rounded-[min(1vw,12px)] bg-deep p-6 ring-1 ring-cream/10">
               <span className="text-xs font-semibold uppercase tracking-[0.22em] text-cream/50">
-                top 3, unranked, do not ask
+                top 5, unranked, do not ask
               </span>
               <ul className="mt-4 space-y-3 text-base text-cream/85">
                 <li className="flex items-center gap-3">
@@ -284,6 +284,14 @@ function Index() {
                 <li className="flex items-center gap-3">
                   <span className="size-3 rotate-45 bg-rose" />
                   Sunflowers — the yellow we cannot get enough of
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="size-3 rotate-45 bg-electric" />
+                  Guitar — learned the intro once, will not let it go
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="size-3 rotate-45 bg-cream" />
+                  Dogs — every single one, pointed at out loud
                 </li>
               </ul>
             </div>
