@@ -5,6 +5,7 @@ import sunflower1 from "@/assets/sunflower-1.jpg";
 import sunflower2 from "@/assets/sunflower-2.jpg";
 import sunflower3 from "@/assets/sunflower-3.jpg";
 import sunflower4 from "@/assets/sunflower-4.jpg";
+import { VideoIntro } from "@/components/VideoIntro";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -40,6 +41,7 @@ const stickers = [
 function Index() {
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-night font-sans text-cream antialiased">
+      <VideoIntro />
       {/* overprint glow blobs */}
       <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute -top-32 -left-24 size-[520px] rounded-full bg-electric/40 blur-[120px]" />
