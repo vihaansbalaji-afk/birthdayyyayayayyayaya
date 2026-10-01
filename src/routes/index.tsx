@@ -6,8 +6,10 @@ import sunflower2 from "@/assets/sunflower-2.jpg";
 import sunflower3 from "@/assets/sunflower-3.jpg";
 import sunflower4 from "@/assets/sunflower-4.jpg";
 import { VideoIntro } from "@/components/VideoIntro";
+import { requireBirthdayAccess } from "@/lib/gate.functions";
 
 export const Route = createFileRoute("/")({
+  loader: () => requireBirthdayAccess(),
   head: () => ({
     meta: [
       { title: "Sunflower Side of the Moon — Issue 001" },
