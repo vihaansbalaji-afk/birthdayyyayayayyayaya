@@ -28,10 +28,9 @@ export function VideoIntro() {
   }, [phase, dismiss]);
 
   useEffect(() => {
-    if (phase === "fading") {
-      const t = window.setTimeout(() => setPhase("gone"), 700);
-      return () => window.clearTimeout(t);
-    }
+    if (phase !== "fading") return;
+    const t = window.setTimeout(() => setPhase("gone"), 700);
+    return () => window.clearTimeout(t);
   }, [phase]);
 
   if (phase === "gone") return null;
