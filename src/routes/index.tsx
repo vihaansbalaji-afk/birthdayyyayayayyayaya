@@ -128,7 +128,7 @@ function Index() {
             <div className="col-span-2 flex items-center gap-4 rounded-[min(1vw,12px)] bg-deep p-5 ring-1 ring-cream/10">
               <span className="size-5 rotate-45 bg-petrol" />
               <p className="font-serif text-lg italic text-cream/80">
-                "the playlist is the love language, but we're not saying that."
+                "guitar in one hand, chai in the other, a dog video on loop. that's the whole vibe."
               </p>
             </div>
           </div>
@@ -270,7 +270,7 @@ function Index() {
 
             <div className="mt-8 rounded-[min(1vw,12px)] bg-deep p-6 ring-1 ring-cream/10">
               <span className="text-xs font-semibold uppercase tracking-[0.22em] text-cream/50">
-                top 3, unranked, do not ask
+                top 5, unranked, do not ask
               </span>
               <ul className="mt-4 space-y-3 text-base text-cream/85">
                 <li className="flex items-center gap-3">
