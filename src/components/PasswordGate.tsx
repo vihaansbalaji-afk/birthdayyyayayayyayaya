@@ -1,11 +1,9 @@
 import { useState, type FormEvent } from "react";
 import { useRouter } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/react-start";
 import { Dog, Flower2, Guitar, Sparkles, X } from "lucide-react";
 import hintAsset from "@/assets/birthday-date-hint.png.asset.json";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { unlockSite } from "@/lib/gate.functions";
 
 function formatDate(value: string) {
   const digits = value.replace(/\D/g, "").slice(0, 6);
@@ -26,7 +24,6 @@ function Jhumka({ className }: { className: string }) {
 
 export function PasswordGate() {
   const router = useRouter();
-  const unlock = useServerFn(unlockSite);
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -42,13 +39,18 @@ export function PasswordGate() {
     setSubmitting(true);
     setError("");
     try {
-      const result = await unlock({ data: { password } });
+      const response = await fetch("/api/public/unlock", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ password }),
+      });
+      const result = (await response.json()) as { ok?: boolean };
+      if (!response.ok) throw new Error("Unlock request failed");
       if (!result.ok) {
         setError("Not quite. Try the date that belongs to this photo.");
         return;
       }
-      await router.navigate({ to: "/" });
-      await router.invalidate();
+      window.location.assign("/");
     } catch {
       setError("Something went wrong. Please try once more.");
     } finally {
