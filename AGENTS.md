@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Gate the birthday site with a server-validated encrypted session so the shared date password never ships to browsers.
+- Use a same-origin public unlock route for the date check so its encrypted session cookie is committed before redirecting to the protected home route.
