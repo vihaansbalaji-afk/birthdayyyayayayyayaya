@@ -15,7 +15,7 @@ function sessionConfig() {
   if (!secret || secret.length < 32) throw new Error("SESSION_SECRET is not configured");
   return {
     password: secret,
-    name: "birthday-zine-gate",
+    name: "birthday-zine-gate-v2",
     maxAge: 60 * 60 * 24 * 30,
     cookie: { httpOnly: true, secure: true, sameSite: "lax" as const, path: "/" },
   };

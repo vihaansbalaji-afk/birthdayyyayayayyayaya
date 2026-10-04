@@ -1,5 +1,4 @@
 import { useState, type FormEvent } from "react";
-import { useRouter } from "@tanstack/react-router";
 import { Dog, Flower2, Guitar, Sparkles, X } from "lucide-react";
 import hintAsset from "@/assets/birthday-date-hint.png.asset.json";
 import { Button } from "@/components/ui/button";
@@ -23,7 +22,6 @@ function Jhumka({ className }: { className: string }) {
 }
 
 export function PasswordGate() {
-  const router = useRouter();
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -43,7 +41,16 @@ export function PasswordGate() {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ password }),
+        credentials: "same-origin",
       });
+      if (response.redirected) {
+        if (new URL(response.url).pathname === "/") {
+          window.location.assign("/");
+          return;
+        }
+        setError("The date was accepted, but the page could not be opened. Please try again.");
+        return;
+      }
       const result = (await response.json()) as { ok?: boolean };
       if (!response.ok) throw new Error("Unlock request failed");
       if (!result.ok) {
