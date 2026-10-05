@@ -16,7 +16,7 @@ function sessionConfig() {
   return {
     password: secret,
     name: "birthday-zine-gate-v2",
-    maxAge: 60 * 60 * 24 * 30,
+    // no maxAge: session cookie, so the gate returns when the browser is closed
     cookie: { httpOnly: true, secure: true, sameSite: "lax" as const, path: "/" },
   };
 }

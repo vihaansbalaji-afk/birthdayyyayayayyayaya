@@ -40,7 +40,7 @@ export const Route = createFileRoute("/api/public/unlock")({
         const session = await useSession<GateSession>({
           password: sessionSecret,
           name: "birthday-zine-gate-v2",
-          maxAge: 60 * 60 * 24 * 30,
+          // no maxAge: session cookie, so the gate returns when the browser is closed
           cookie: { httpOnly: true, secure: true, sameSite: "lax", path: "/" },
         });
         await session.update({ unlocked: true });
