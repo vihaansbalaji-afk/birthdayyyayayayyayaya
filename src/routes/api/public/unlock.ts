@@ -45,7 +45,7 @@ export const Route = createFileRoute("/api/public/unlock")({
         });
         await session.update({ unlocked: true });
 
-        return Response.redirect(new URL("/", request.url), 303);
+        return Response.json({ ok: true });
       },
     },
   },
