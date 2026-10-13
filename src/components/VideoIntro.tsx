@@ -18,6 +18,17 @@ export function VideoIntro() {
   }, []);
 
   useEffect(() => {
+    const hostname = window.location.hostname;
+    const isEditingPreview =
+      hostname === "localhost" ||
+      hostname === "127.0.0.1" ||
+      hostname.startsWith("id-preview--");
+
+    if (isEditingPreview) {
+      setPhase("gone");
+      return;
+    }
+
     if (phase !== "play") return;
     document.body.style.overflow = "hidden";
     const t = window.setTimeout(dismiss, INTRO_SECONDS * 1000);
