@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { Dog, Flower2, Guitar, Sparkles, X } from "lucide-react";
 import hintAsset from "@/assets/birthday-date-hint.png.asset.json";
 import { Button } from "@/components/ui/button";
@@ -22,15 +22,10 @@ function Jhumka({ className }: { className: string }) {
 }
 
 export function PasswordGate() {
-  const [ready, setReady] = useState(false);
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [showHint, setShowHint] = useState(false);
-
-  useEffect(() => {
-    setReady(true);
-  }, []);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -110,14 +105,13 @@ export function PasswordGate() {
             aria-invalid={Boolean(error)}
             className="h-16 rounded-none border-0 border-b border-sun/50 bg-transparent px-2 text-center font-serif text-4xl tracking-[0.16em] text-cream shadow-none placeholder:text-cream/25 focus-visible:border-sunlite focus-visible:ring-0 sm:text-5xl"
             autoFocus
-            disabled={!ready}
           />
           <div className="mt-3 min-h-5" aria-live="polite">
             {error ? <p id="date-error" className="text-sm text-rose">{error}</p> : null}
           </div>
           <Button
             type="submit"
-            disabled={submitting || !ready}
+            disabled={submitting}
             variant="outline"
             className="mt-5 h-12 w-full rounded-none border-sun/70 bg-transparent font-semibold uppercase tracking-[0.16em] text-sunlite shadow-none hover:bg-sun/10 hover:text-sunlite active:bg-sun active:text-night"
           >
