@@ -27,8 +27,15 @@ export function PasswordGate() {
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [showHint, setShowHint] = useState(false);
+  const [isEditingHost, setIsEditingHost] = useState(false);
 
   useEffect(() => {
+    const hostname = window.location.hostname;
+    setIsEditingHost(
+      hostname === "localhost" ||
+        hostname === "127.0.0.1" ||
+        hostname.startsWith("id-preview--"),
+    );
     setReady(true);
   }, []);
 
@@ -131,6 +138,16 @@ export function PasswordGate() {
           >
             I need a hint
           </Button>
+          {ready && isEditingHost ? (
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => window.location.assign("/")}
+              className="mt-3 h-10 w-full rounded-none border-sun/45 bg-transparent text-sm text-sunlite/75 shadow-none hover:bg-sun/10 hover:text-sunlite"
+            >
+              Open editor
+            </Button>
+          ) : null}
         </form>
       </section>
 

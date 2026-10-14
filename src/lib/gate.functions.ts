@@ -1,7 +1,7 @@
 import { createHash, timingSafeEqual } from "node:crypto";
 import { redirect } from "@tanstack/react-router";
 import { createServerFn } from "@tanstack/react-start";
-import { useSession } from "@tanstack/react-start/server";
+import { getRequestUrl, useSession } from "@tanstack/react-start/server";
 import { z } from "zod";
 
 const gateInput = z.object({
@@ -41,6 +41,13 @@ export const unlockSite = createServerFn({ method: "POST" })
   });
 
 export const requireBirthdayAccess = createServerFn({ method: "GET" }).handler(async () => {
+  const hostname = getRequestUrl().hostname;
+  const isEditingHost =
+    hostname === "localhost" ||
+    hostname === "127.0.0.1" ||
+    hostname.startsWith("id-preview--");
+  if (isEditingHost) return { unlocked: true as const };
+
   const session = await useSession<GateSession>(sessionConfig());
   if (!session.data.unlocked) throw redirect({ to: "/unlock" });
   return { unlocked: true as const };
