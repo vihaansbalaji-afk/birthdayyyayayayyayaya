@@ -20,6 +20,17 @@
   --color-petrol: #12b3b3;
   --color-rose: #e0447a;
   --color-cream: #f1ecdd;
+  --color-board-frame: #765d42;
+  --color-board-frame-light: #b89a72;
+  --color-board-cork: #b99b78;
+  --color-board-cork-dark: #8b725b;
+  --color-board-paper: #fffdf6;
+  --color-board-ink: #253552;
+  --color-board-blue: #315e9e;
+  --color-board-sky: #bdd3e7;
+  --color-board-powder: #e1edf5;
+  --color-board-sun: #d5ad52;
+  --color-board-tape: #d6e3ed;
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Karla", ui-sans-serif, system-ui, sans-serif;
   --radius-zine: min(1vw, 12px);
@@ -90,4 +101,202 @@
 
 .sticker-peek {
   animation: stickerPeek 3.4s ease-in-out infinite;
+}
+
+/* Keepsake board — styles are scoped to the sticker wall only. */
+.memory-board-frame {
+  padding: 10px;
+  border: 1px solid color-mix(in oklab, var(--color-board-frame-light) 65%, transparent);
+  background: linear-gradient(135deg, var(--color-board-frame-light), var(--color-board-frame) 48%, var(--color-board-frame-light));
+  box-shadow: 0 20px 46px color-mix(in oklab, var(--color-night) 42%, transparent), inset 0 1px 1px color-mix(in oklab, white 40%, transparent);
+}
+
+.memory-board {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.42;
+  min-height: 620px;
+  overflow: hidden;
+  border: 8px solid var(--color-board-frame);
+  background-color: var(--color-board-cork);
+  background-image: radial-gradient(ellipse at 18% 22%, color-mix(in oklab, var(--color-board-paper) 16%, transparent) 0 1px, transparent 2px), radial-gradient(ellipse at 72% 61%, color-mix(in oklab, var(--color-board-cork-dark) 20%, transparent) 0 1px, transparent 2px), repeating-linear-gradient(4deg, transparent 0 7px, color-mix(in oklab, var(--color-board-cork-dark) 9%, transparent) 8px 9px);
+  box-shadow: inset 0 0 24px color-mix(in oklab, var(--color-board-ink) 24%, transparent);
+}
+
+.board-piece { position: absolute; }
+
+.board-streamer {
+  z-index: 5;
+  top: 4%;
+  left: 36%;
+  display: flex;
+  width: 31%;
+  min-height: 9%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(0 0, 100% 0, 94% 100%, 50% 82%, 6% 100%);
+  background: linear-gradient(100deg, var(--color-board-ink), var(--color-board-blue), var(--color-board-ink));
+  box-shadow: 0 6px 12px color-mix(in oklab, var(--color-board-ink) 30%, transparent);
+  color: var(--color-board-paper);
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2.2vw, 1.8rem);
+  letter-spacing: 0.13em;
+  text-align: center;
+  text-shadow: 0 1px 1px color-mix(in oklab, black 35%, transparent);
+}
+
+.board-streamer small {
+  margin-top: -2px;
+  font-family: var(--font-sans);
+  font-size: 0.42em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.board-bow {
+  z-index: 4;
+  top: 7%;
+  left: 8%;
+  width: 9%;
+  aspect-ratio: 1.5;
+  transform: rotate(-18deg);
+  background: var(--color-board-blue);
+  clip-path: polygon(0 0, 46% 27%, 48% 50%, 45% 76%, 0 100%, 15% 51%, 0 0, 100% 0, 86% 50%, 100% 100%, 54% 76%, 51% 50%, 55% 25%);
+  filter: drop-shadow(2px 4px 3px color-mix(in oklab, var(--color-board-ink) 25%, transparent));
+}
+
+.memory-polaroid {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 7px 7px 0;
+  background: var(--color-board-paper);
+  box-shadow: 2px 7px 14px color-mix(in oklab, var(--color-board-ink) 30%, transparent);
+}
+
+.polaroid-image-slot {
+  display: grid;
+  aspect-ratio: 1 / 1;
+  place-items: center;
+  border: 1px solid color-mix(in oklab, var(--color-board-blue) 14%, transparent);
+  background: repeating-linear-gradient(135deg, var(--color-board-powder), var(--color-board-powder) 8px, color-mix(in oklab, var(--color-board-sky) 35%, var(--color-board-powder)) 9px, color-mix(in oklab, var(--color-board-sky) 35%, var(--color-board-powder)) 10px);
+  color: color-mix(in oklab, var(--color-board-ink) 52%, transparent);
+  font-size: clamp(0.55rem, 1vw, 0.78rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.polaroid-caption { display: block; min-height: 31px; background: var(--color-board-paper); }
+.polaroid-left { top: 22%; left: 4%; width: 18%; transform: rotate(-7deg); }
+.polaroid-right { top: 20%; right: 4%; width: 18%; transform: rotate(7deg); }
+.polaroid-bottom { bottom: 5%; left: 34%; width: 17%; transform: rotate(-4deg); }
+
+.artist-print {
+  z-index: 3;
+  margin: 0;
+  padding: 6px 6px 8px;
+  background: var(--color-board-paper);
+  box-shadow: 2px 7px 16px color-mix(in oklab, var(--color-board-ink) 34%, transparent);
+}
+
+.artist-print::before,
+.memory-polaroid::before,
+.keepsake-ticket::before,
+.keepsake-note::before {
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  width: 13px;
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in oklab, var(--color-board-ink) 35%, transparent);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--color-board-paper) 0 10%, var(--color-board-sky) 25%, var(--color-board-blue) 70%);
+  box-shadow: 1px 2px 3px color-mix(in oklab, var(--color-board-ink) 30%, transparent);
+  content: "";
+  transform: translateX(-50%);
+}
+
+.artist-print img { display: block; width: 100%; height: auto; }
+.artist-print figcaption { padding-top: 6px; color: var(--color-board-ink); font-size: clamp(0.48rem, 0.8vw, 0.68rem); font-weight: 700; letter-spacing: 0.08em; text-align: center; }
+.artist-arijit { top: 15%; left: 27%; width: 21%; transform: rotate(4deg); }
+.artist-anuv { top: 51%; right: 27%; width: 18%; transform: rotate(5deg); }
+
+.keepsake-ticket {
+  z-index: 3;
+  top: 63%;
+  left: 5%;
+  display: flex;
+  width: 19%;
+  min-height: 17%;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 12px 15px;
+  border: 1px dashed var(--color-board-blue);
+  background: var(--color-board-powder);
+  color: var(--color-board-ink);
+  text-align: center;
+  transform: rotate(-5deg);
+}
+
+.keepsake-ticket span, .keepsake-ticket small { font-size: clamp(0.45rem, 0.8vw, 0.66rem); letter-spacing: 0.15em; text-transform: uppercase; }
+.keepsake-ticket strong { font-family: var(--font-serif); font-size: clamp(0.9rem, 1.6vw, 1.35rem); line-height: 1; }
+
+.keepsake-note {
+  z-index: 4;
+  top: 43%;
+  left: 51%;
+  display: grid;
+  width: 18%;
+  min-height: 19%;
+  place-content: center;
+  gap: 6px;
+  padding: 15px;
+  background: var(--color-board-paper);
+  box-shadow: 2px 6px 12px color-mix(in oklab, var(--color-board-ink) 24%, transparent);
+  color: var(--color-board-ink);
+  transform: rotate(-3deg);
+}
+
+.keepsake-note span { font-size: clamp(0.5rem, 0.8vw, 0.67rem); letter-spacing: 0.13em; text-transform: uppercase; }
+.keepsake-note strong { font-family: var(--font-serif); font-size: clamp(1rem, 1.8vw, 1.45rem); line-height: 1.05; }
+.keepsake-note svg { width: 20px; color: var(--color-board-blue); }
+
+.board-headphones { z-index: 4; top: 42%; right: 5%; color: var(--color-board-blue); transform: rotate(14deg); }
+.board-headphones svg { width: clamp(34px, 6vw, 64px); height: auto; stroke-width: 1.3; }
+.board-flower { z-index: 4; right: 9%; bottom: 11%; color: var(--color-board-sun); transform: rotate(-12deg); }
+.board-flower svg { width: clamp(40px, 7vw, 76px); height: auto; stroke-width: 1.2; }
+.board-sparkle { z-index: 4; top: 33%; left: 51%; color: var(--color-board-sun); transform: rotate(10deg); }
+.board-sparkle svg { width: clamp(24px, 4vw, 40px); height: auto; }
+.board-music { z-index: 4; top: 57%; left: 25%; color: var(--color-board-blue); font-size: clamp(1.7rem, 3vw, 2.6rem); transform: rotate(9deg); }
+.board-tape { z-index: 5; top: 17%; left: 33%; width: 8%; height: 18px; background: color-mix(in oklab, var(--color-board-tape) 85%, transparent); transform: rotate(-11deg); }
+.board-edition { right: 3%; bottom: 2%; color: color-mix(in oklab, var(--color-board-paper) 85%, var(--color-board-ink)); font-family: var(--font-serif); font-size: clamp(0.8rem, 1.4vw, 1.15rem); font-style: italic; transform: rotate(-2deg); }
+
+@media (max-width: 639px) {
+  .memory-board-frame { padding: 7px; }
+  .memory-board { aspect-ratio: auto; min-height: 1080px; border-width: 6px; }
+  .board-streamer { top: 2%; left: 20%; width: 60%; min-height: 7%; font-size: 1.2rem; }
+  .board-bow { top: 7%; left: 8%; width: 13%; }
+  .polaroid-left { top: 12%; left: 4%; width: 36%; }
+  .polaroid-right { top: 39%; right: 4%; width: 36%; }
+  .polaroid-bottom { bottom: 2%; left: 4%; width: 36%; }
+  .artist-arijit { top: 14%; right: 4%; left: auto; width: 39%; }
+  .artist-anuv { top: 64%; right: 4%; width: 40%; }
+  .artist-print { padding: 5px 5px 7px; }
+  .artist-print figcaption { font-size: 0.48rem; }
+  .keepsake-ticket { top: 39%; left: 4%; width: 34%; min-height: 17%; padding: 10px 7px; }
+  .keepsake-ticket span, .keepsake-ticket small { font-size: 0.48rem; }
+  .keepsake-ticket strong { font-size: 1rem; }
+  .keepsake-note { top: 58%; left: 7%; width: 40%; min-height: 14%; padding: 11px; }
+  .keepsake-note span { font-size: 0.48rem; }
+  .keepsake-note strong { font-size: 1.12rem; }
+  .board-headphones { top: 55%; right: 7%; }
+  .board-headphones svg { width: 39px; }
+  .board-flower { right: 43%; bottom: 3%; }
+  .board-flower svg { width: 36px; }
+  .board-sparkle { top: 35%; left: 48%; }
+  .board-music { top: 54%; left: 51%; font-size: 1.7rem; }
+  .board-tape { top: 11%; left: 35%; width: 17%; height: 14px; }
+  .board-edition { right: 3%; bottom: 1%; max-width: 51%; font-size: 0.78rem; text-align: right; }
 }

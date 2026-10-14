@@ -5,8 +5,11 @@ import sunflower1 from "@/assets/sunflower-1.jpg";
 import sunflower2 from "@/assets/sunflower-2.jpg";
 import sunflower3 from "@/assets/sunflower-3.jpg";
 import sunflower4 from "@/assets/sunflower-4.jpg";
+import arijitPrint from "@/assets/arijit-singh-print.png.asset.json";
+import anuvReceipt from "@/assets/anuv-jain-receipt.png.asset.json";
 import { VideoIntro } from "@/components/VideoIntro";
 import { requireBirthdayAccess } from "@/lib/gate.functions";
+import { Flower2, Headphones, Music2, Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   loader: () => requireBirthdayAccess(),
@@ -30,15 +33,6 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
-
-const stickers = [
-  { label: "arijit singh, no notes", bg: "bg-sun", text: "text-night", ring: "ring-sun/40", dot: "bg-night", delay: "" },
-  { label: "anuv jain at 2a.m.", bg: "bg-petrol", text: "text-night", ring: "ring-petrol/40", dot: "bg-night", delay: ".3s" },
-  { label: "4 chords and the truth", bg: "bg-rose", text: "text-cream", ring: "ring-rose/40", dot: "bg-cream", delay: ".6s" },
-  { label: "stops for every single dog", bg: "bg-royal", text: "text-sunlite", ring: "ring-cream/15", dot: "bg-sunlite", delay: ".9s" },
-  { label: "the playlist is the gift", bg: "bg-deep", text: "text-cream", ring: "ring-cream/15", dot: "bg-electric", delay: "1.2s" },
-  { label: "[inside joke: that one meme]", bg: "bg-electric", text: "text-cream", ring: "ring-electric/40", dot: "bg-cream", delay: "1.5s" },
-];
 
 function Index() {
   return (
@@ -251,53 +245,59 @@ function Index() {
 
         {/* sticker wall */}
         <section id="wall" className="relative px-5 py-20 sm:px-8 sm:py-28">
-          <div className="mx-auto max-w-[64ch]">
+          <div className="mx-auto max-w-5xl">
             <h2 className="font-serif text-balance text-5xl font-semibold leading-none text-cream sm:text-7xl">
               sticker wall
             </h2>
-            <p className="mt-4 text-sm text-cream/60">
-              favorites, doodled in. (inside-joke placeholders — swap with the real ones.)
-            </p>
+            <p className="mt-4 text-sm text-cream/60">little things, pinned in place · currently on repeat</p>
 
-            <div className="mt-10 flex flex-wrap gap-4">
-              {stickers.map((s) => (
-                <div
-                  key={s.label}
-                  className={`sticker-peek inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ring-1 ${s.bg} ${s.text} ${s.ring}`}
-                  style={s.delay ? { animationDelay: s.delay } : undefined}
-                >
-                  <span className={`size-2.5 rotate-45 ${s.dot}`} />
-                  {s.label}
+            <div className="memory-board-frame mt-9">
+              <div className="memory-board" role="group" aria-label="A handmade keepsake board for Gayathri">
+                <div className="board-bow board-piece" aria-hidden="true" />
+                <div className="board-streamer board-piece" aria-label="Stargirl fabric streamer">
+                  <span>STARGIRL</span>
+                  <small>edition 001</small>
                 </div>
-              ))}
-            </div>
 
-            <div className="mt-8 rounded-[min(1vw,12px)] bg-deep p-6 ring-1 ring-cream/10">
-              <span className="text-xs font-semibold uppercase tracking-[0.22em] text-cream/50">
-                top 5, unranked, do not ask
-              </span>
-              <ul className="mt-4 space-y-3 text-base text-cream/85">
-                <li className="flex items-center gap-3">
-                  <span className="size-3 rotate-45 bg-sun" />
-                  Arijit Singh — the whole discography, no skips
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="size-3 rotate-45 bg-petrol" />
-                  Anuv Jain — the 2a.m. soft boy, officially
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="size-3 rotate-45 bg-rose" />
-                  Sunflowers — the yellow we cannot get enough of
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="size-3 rotate-45 bg-electric" />
-                  Guitar — learned the intro once, will not let it go
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="size-3 rotate-45 bg-cream" />
-                  Dogs — every single one, pointed at out loud
-                </li>
-              </ul>
+                <figure className="memory-polaroid polaroid-left board-piece" aria-label="Blank photo placeholder one">
+                  <div className="polaroid-image-slot"><span>photo goes here</span></div>
+                  <figcaption className="polaroid-caption" />
+                </figure>
+                <figure className="memory-polaroid polaroid-right board-piece" aria-label="Blank photo placeholder two">
+                  <div className="polaroid-image-slot"><span>photo goes here</span></div>
+                  <figcaption className="polaroid-caption" />
+                </figure>
+                <figure className="memory-polaroid polaroid-bottom board-piece" aria-label="Blank photo placeholder three">
+                  <div className="polaroid-image-slot"><span>photo goes here</span></div>
+                  <figcaption className="polaroid-caption" />
+                </figure>
+
+                <figure className="artist-print artist-arijit board-piece">
+                  <img src={arijitPrint.url} alt="Arijit Singh illustrated artist print" />
+                  <figcaption>ARJIT SINGH · NO SKIPS</figcaption>
+                </figure>
+                <figure className="artist-print artist-anuv board-piece">
+                  <img src={anuvReceipt.url} alt="Anuv Jain all-time playlist receipt" />
+                  <figcaption>THE 2 A.M. SIDE</figcaption>
+                </figure>
+
+                <div className="keepsake-ticket board-piece" aria-label="A ticket stub for one more song">
+                  <span>ADMIT ONE</span>
+                  <strong>one more song</strong>
+                  <small>front row · always</small>
+                </div>
+                <div className="keepsake-note board-piece">
+                  <span>current status</span>
+                  <strong>playlist on.<br />world off.</strong>
+                  <Music2 aria-hidden="true" />
+                </div>
+                <div className="board-headphones board-piece" aria-hidden="true"><Headphones /></div>
+                <div className="board-flower board-piece" aria-hidden="true"><Flower2 /></div>
+                <div className="board-sparkle board-piece" aria-hidden="true"><Sparkles /></div>
+                <div className="board-music board-piece" aria-hidden="true">♫</div>
+                <div className="board-tape board-piece" aria-hidden="true" />
+                <p className="board-edition board-piece">a tiny archive of very good taste</p>
+              </div>
             </div>
           </div>
         </section>
