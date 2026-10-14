@@ -11,4 +11,4 @@
 
 - Gate the birthday site with a server-validated encrypted session so the shared date password never ships to browsers.
 - Use a same-origin public unlock route for the date check so its encrypted session cookie is committed before redirecting to the protected home route.
-- Wait for the unlock form to hydrate before allowing submission, and skip the intro video on editing-preview hosts so editors can work on the main page immediately.
+- Keep the unlock form hydration-gated; allow a direct home-page shortcut only on localhost and id-preview editing hosts, and skip the intro video there so editors can work immediately without changing the published password flow.
