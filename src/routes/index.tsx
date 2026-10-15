@@ -7,6 +7,11 @@ import sunflower3 from "@/assets/sunflower-3.jpg";
 import sunflower4 from "@/assets/sunflower-4.jpg";
 import arijitPrint from "@/assets/arijit-singh-print.png.asset.json";
 import anuvReceipt from "@/assets/anuv-jain-receipt.png.asset.json";
+import photoOne from "@/assets/sticker-photo-01.png.asset.json";
+import photoTwo from "@/assets/sticker-photo-02.png.asset.json";
+import photoThree from "@/assets/sticker-photo-03.png.asset.json";
+import photoFour from "@/assets/sticker-photo-04.png.asset.json";
+import photoFive from "@/assets/sticker-photo-05.png.asset.json";
 import { VideoIntro } from "@/components/VideoIntro";
 import { requireBirthdayAccess } from "@/lib/gate.functions";
 import { Flower2, Headphones, Music2, Sparkles } from "lucide-react";
@@ -259,16 +264,24 @@ function Index() {
                   <small>edition 001</small>
                 </div>
 
-                <figure className="memory-polaroid polaroid-left board-piece" aria-label="Blank photo placeholder one">
-                  <div className="polaroid-image-slot"><span>photo goes here</span></div>
+                <figure className="memory-polaroid polaroid-left board-piece">
+                  <img className="polaroid-photo" src={photoOne.url} alt="Birthday keepsake photo with the two of you together" />
                   <figcaption className="polaroid-caption" />
                 </figure>
-                <figure className="memory-polaroid polaroid-right board-piece" aria-label="Blank photo placeholder two">
-                  <div className="polaroid-image-slot"><span>photo goes here</span></div>
+                <figure className="memory-polaroid polaroid-right board-piece">
+                  <img className="polaroid-photo" src={photoTwo.url} alt="Birthday keepsake mirror photo" />
                   <figcaption className="polaroid-caption" />
                 </figure>
-                <figure className="memory-polaroid polaroid-bottom board-piece" aria-label="Blank photo placeholder three">
-                  <div className="polaroid-image-slot"><span>photo goes here</span></div>
+                <figure className="memory-polaroid polaroid-bottom board-piece">
+                  <img className="polaroid-photo" src={photoThree.url} alt="Birthday keepsake photo on a yellow waterslide" />
+                  <figcaption className="polaroid-caption" />
+                </figure>
+                <figure className="memory-polaroid polaroid-extra-one board-piece">
+                  <img className="polaroid-photo" src={photoFour.url} alt="Birthday keepsake portrait" />
+                  <figcaption className="polaroid-caption" />
+                </figure>
+                <figure className="memory-polaroid polaroid-extra-two board-piece">
+                  <img className="polaroid-photo" src={photoFive.url} alt="Black-and-white birthday keepsake mirror photo" />
                   <figcaption className="polaroid-caption" />
                 </figure>
 
